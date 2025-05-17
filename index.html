@@ -536,22 +536,10 @@ path {
             createHearts();
         }, 8000);
     </script>
-    <audio id="birthday-audio" autoplay loop>
-  <source src="happy_birthday.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+   <audio id="birthday-audio" autoplay muted loop>
+  <source src="birthday-song.mp3" type="audio/mpeg" />
 </audio>
 
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const audio = document.getElementById('birthday-audio');
-    audio.play().catch(() => {
-      document.body.addEventListener('click', () => {
-        audio.play();
-      }, { once: true });
-    });
-  });
-</script>
 
 
     
