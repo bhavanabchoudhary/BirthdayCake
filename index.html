@@ -48,35 +48,25 @@
         display: block;
         position: relative;
         margin: -10em auto 0 auto;
+        z-index: 1;
       }
 
       /* ============================================== Candle */
       .cake {
-    background: #ffffff;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%;
-    margin-left: -2.4px;
-    margin-top: -150px; /* Adjust this to position above cake */
-    width: 5px;
-    height: 35px;
-    transform: translateY(-300px);
-    backface-visibility: hidden;
-    animation: in 500ms 6s ease-out forwards;
-    z-index: 10; /* Ensure it's above the cake */
-}
-
-/* Update media query for mobile */
-@media (max-width: 600px) {
-    .cake {
+        background: #ffffff;
+        border-radius: 10px;
+        position: absolute;
         top: 50%;
-        margin-top: -120px; /* Adjust for mobile */
-        width: 4px;
-        height: 28px;
+        left: 50%;
+        margin-left: -2.4px;
+        margin-top: -150px;
+        width: 5px;
+        height: 35px;
+        transform: translateY(-300px);
+        backface-visibility: hidden;
+        animation: in 500ms 6s ease-out forwards;
         z-index: 10;
-    }
-}
+      }
       .cake:after,
       .cake:before {
         background: rgba(255, 0, 0, 0.4);
@@ -298,20 +288,32 @@
         background: radial-gradient(circle, #ff9e9e 0%, transparent 70%);
       }
       svg {
-  overflow: visible;
-}
-path {
-  shape-rendering: geometricPrecision;
-}
-        @media (max-width: 600px) {
-  .cake {
-    top: 200px; /* adjust position if needed */
-    width: 4px;
-    height: 28px;
-    z-index: 10;
-  }
-}
-
+        overflow: visible;
+      }
+      path {
+        shape-rendering: geometricPrecision;
+      }
+      
+      @media (max-width: 600px) {
+        .cake {
+          top: 50%;
+          margin-top: -120px;
+          width: 4px;
+          height: 28px;
+          z-index: 10;
+        }
+        #cake {
+          width: 150px;
+          height: auto;
+        }
+        .text h1 {
+          font-size: 2em;
+        }
+        .birthday-message {
+          font-size: 1.1rem;
+          padding: 15px;
+        }
+      }
     </style>
 </head>
 <body>
