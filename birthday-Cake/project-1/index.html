@@ -536,5 +536,19 @@ path {
             createHearts();
         }, 8000);
     </script>
+    <audio id="birthday-audio" autoplay loop muted controls>
+        <source src="Happy_birthday_to_you_MIDI(chosic.com).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        window.addEventListener('load', () => {
+            const audio = document.getElementById('birthday-audio');
+            audio.muted = false;
+            audio.play().catch(() => {
+                // Autoplay might be blocked, user interaction needed
+                console.log('Autoplay blocked, user interaction required to play audio.');
+            });
+        });
+    </script>
 </body>
 </html>
