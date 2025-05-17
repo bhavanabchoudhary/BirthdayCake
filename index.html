@@ -48,7 +48,6 @@
         display: block;
         position: relative;
         margin: -10em auto 0 auto;
-        z-index: 1;
       }
 
       /* ============================================== Candle */
@@ -56,16 +55,15 @@
         background: #ffffff;
         border-radius: 10px;
         position: absolute;
-        top: 50%;
+        top: 228px;
         left: 50%;
         margin-left: -2.4px;
-        margin-top: -150px;
+        margin-top: 0; /* changed from -8.33333333px to 0 to align candle tip */
         width: 5px;
         height: 35px;
         transform: translateY(-300px);
         backface-visibility: hidden;
         animation: in 500ms 6s ease-out forwards;
-        z-index: 10;
       }
       .cake:after,
       .cake:before {
@@ -288,32 +286,55 @@
         background: radial-gradient(circle, #ff9e9e 0%, transparent 70%);
       }
       svg {
-        overflow: visible;
-      }
-      path {
-        shape-rendering: geometricPrecision;
-      }
-      
-      @media (max-width: 600px) {
-        .cake {
-          top: 50%;
-          margin-top: -120px;
-          width: 4px;
-          height: 28px;
-          z-index: 10;
-        }
-        #cake {
-          width: 150px;
-          height: auto;
-        }
-        .text h1 {
-          font-size: 2em;
-        }
-        .birthday-message {
-          font-size: 1.1rem;
-          padding: 15px;
-        }
-      }
+  overflow: visible;
+}
+path {
+  shape-rendering: geometricPrecision;
+}
+        @media (max-width: 600px) {
+  .cake {
+    top: 200px; /* adjust position if needed */
+    margin-top: 0; /* added to align candle tip on mobile */
+    width: 4px;
+    height: 28px;
+    z-index: 10;
+  }
+  body {
+    padding: 10px;
+  }
+  .text h1 {
+    font-size: 1.8em;
+  }
+  .name {
+    font-size: 1.2rem;
+  }
+  .birthday-message {
+    width: 95%;
+    font-size: 1rem;
+    padding: 15px;
+  }
+  #play-audio-btn {
+    top: 10px !important;
+    left: 10px !important;
+    padding: 10px 18px !important;
+    font-size: 16px !important;
+  }
+  .balloon {
+    width: 40px !important;
+    height: 50px !important;
+  }
+  .confetti {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  .star {
+    font-size: 14px !important;
+  }
+  .heart {
+    font-size: 14px !important;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -559,12 +580,34 @@
             createHearts();
         }, 8000);
     </script>
-   <audio id="birthday-audio" autoplay loop>
+<audio id="birthday-audio" loop>
   <source src="happy_birthday.mp3" type="audio/mpeg" />
 </audio>
 
+<button id="play-audio-btn" style="position: fixed; top: 20px; left: 20px; z-index: 1000; padding: 12px 24px; font-size: 18px; background-color: #ff6b6b; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 8px rgba(255, 107, 107, 0.4); transition: background-color 0.3s ease;">
+  Play Birthday Audio
+</button>
 
+<script>
+  const audio = document.getElementById('birthday-audio');
+  const playBtn = document.getElementById('play-audio-btn');
 
+  playBtn.addEventListener('click', () => {
+    audio.play().then(() => {
+      playBtn.style.display = 'none';
+    }).catch(error => {
+      console.log('Error playing audio:', error);
+    });
+  });
+
+  playBtn.addEventListener('mouseenter', () => {
+    playBtn.style.backgroundColor = '#ff4c4c';
+  });
+
+  playBtn.addEventListener('mouseleave', () => {
+    playBtn.style.backgroundColor = '#ff6b6b';
+  });
+</script>
     
 </body>
 </html>
